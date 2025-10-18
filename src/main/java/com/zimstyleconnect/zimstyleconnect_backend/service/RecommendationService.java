@@ -1,8 +1,9 @@
 package com.zimstyleconnect.zimstyleconnect_backend.service;
+
 import com.zimstyleconnect.zimstyleconnect_backend.integration.RecommendationIntegration;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class RecommendationService {
@@ -12,8 +13,7 @@ public class RecommendationService {
         this.recommendationIntegration = recommendationIntegration;
     }
 
-    public List<String> getRecommendations(Long userId) {
-        return recommendationIntegration.getRecommendationsFromAI(userId);
+    public List<Map<String, Object>> recommendForUser(Long userId) {
+        return recommendationIntegration.getRecommendations(userId);
     }
-
 }

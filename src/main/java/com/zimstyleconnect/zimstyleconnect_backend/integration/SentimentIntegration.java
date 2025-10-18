@@ -1,24 +1,19 @@
 package com.zimstyleconnect.zimstyleconnect_backend.integration;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
+import org.springframework.stereotype.Service;
 import java.util.Map;
 
-@Component
+@Service
 public class SentimentIntegration {
 
-    private final RestTemplate restTemplate;
+    private final AIClient aiClient;
 
-    public SentimentIntegration(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public SentimentIntegration(AIClient aiClient) {
+        this.aiClient = aiClient;
     }
 
-    //make use of Flask endpoint
-    public String getSentimentFromAI(String text) {
-        String url = "http://localhost:5050/analyze"; //Flask API endpoint
-        Map<String, String> request = Map.of("text", text);
-        ResponseEntity<Map> response = restTemplate.postForEntity(url, request, Map.class);
-        return (String) response.getBody().get("sentiment");
+    public Map<String, Object> analyzeSentiment(String text) {
+        String url = "http://localhost:5000/api/sentiment";
+        return aiClient.post(url, Map.of("text", text), Map.class);
     }
 }
