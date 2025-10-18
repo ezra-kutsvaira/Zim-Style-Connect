@@ -2,6 +2,8 @@ package com.zimstyleconnect.zimstyleconnect_backend.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "feedback")
 public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
