@@ -14,7 +14,7 @@ public class JwtService {
     private static final String SECRET_KEY = "";
 
     //Generating the token
-    private String generateToken(UserDetails userDetails){
+    public  String generateToken(UserDetails userDetails){
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))

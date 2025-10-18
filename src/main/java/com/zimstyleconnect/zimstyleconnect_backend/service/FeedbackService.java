@@ -16,4 +16,13 @@ public class FeedbackService {
     public List<Feedback> getAllFeedbacks(){
         return feedbackRepository.findAll();
     }
+
+    public List<Feedback> getFeedbacksByProduct(Long productId) {
+        return feedbackRepository.findByProductProductId(productId);
+    }
+
+    public Feedback addFeedback(Feedback feedback) {
+        return feedbackRepository.save(feedback);
+    }
+
 }

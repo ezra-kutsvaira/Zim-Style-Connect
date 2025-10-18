@@ -2,12 +2,13 @@ package com.zimstyleconnect.zimstyleconnect_backend.integration;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Map;
 
-@Component
+@Service
 public class RecommendationIntegration {
     private final RestTemplate restTemplate;
 
